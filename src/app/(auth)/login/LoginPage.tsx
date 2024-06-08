@@ -9,7 +9,7 @@ import {
   DiscordLogoIcon, GoogleLogoIcon,
   PasswordInput, SubmitButton
 } from "@/components";
-import { Info_App } from "@/lib/constants";
+import { Info_App, Paths } from "@/lib/constants";
 import { login } from "@/lib/auth/actions";
 
 export function Login() {
@@ -24,13 +24,13 @@ export function Login() {
       <CardContent>
         <div className="space-y-2">
           <Button variant="outline" className="w-full" asChild>
-            <Link href="/login/google">
+            <Link href={`${Paths.Login}/google`}>
               <GoogleLogoIcon className="mr-2 h-5 w-5" />
               Log in with Google
             </Link>
           </Button>
           <Button variant="outline" className="w-full" asChild>
-            <Link href="/login/discord">
+            <Link href={`${Paths.Login}/discord`}>
               <DiscordLogoIcon className="mr-2 h-5 w-5" />
               Log in with Discord
             </Link>
@@ -65,10 +65,10 @@ export function Login() {
 
           <div className="flex flex-wrap justify-between">
             <Button variant={"link"} size={"sm"} className="p-0" asChild>
-              <Link href={"/signup"}>Not signed up? Sign up now.</Link>
+              <Link href={Paths.Signup}>Not signed up? Sign up now.</Link>
             </Button>
             <Button variant={"link"} size={"sm"} className="p-0" asChild>
-              <Link href={"/reset-password"}>Forgot password?</Link>
+              <Link href={Paths.ResetPassword}>Forgot password?</Link>
             </Button>
           </div>
 
@@ -87,7 +87,7 @@ export function Login() {
           ) : null}
           <SubmitButton className="w-full">Log In</SubmitButton>
           <Button variant="outline" className="w-full" asChild>
-            <Link href="/">Cancel</Link>
+            <Link href={Paths.Home}>Cancel</Link>
           </Button>
         </form>
       </CardContent>

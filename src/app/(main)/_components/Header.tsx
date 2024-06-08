@@ -9,7 +9,7 @@ import {
 } from "@/components";
 import { UserDropdown } from "./UserDropDown";
 import { validateRequest } from "@/lib/auth/validate-request";
-import { routes, Info_App } from "@/lib/constants";
+import { routes, Info_App, Paths } from "@/lib/constants";
 
 export const Header = async () => {
   const { user } = await validateRequest();
@@ -54,7 +54,7 @@ export const Header = async () => {
         <div className="ml-auto flex justify-center space-x-1">
           {user ? <UserDropdown email={user.email} avatar={user.avatar} className="ml-auto" /> :
             <Button asChild variant="secondary">
-              <Link href="/login">Login</Link>
+              <Link href={Paths.Login}>Login</Link>
             </Button>}
           <ThemeToggle />
         </div>

@@ -12,6 +12,7 @@ import {
 import { formatDate } from "@/lib/utils";
 import { type RouterOutputs } from "@/trpc/shared";
 import { ManageSubscriptionForm } from "./ManageSubscriptionForm";
+import { Paths } from "@/lib/constants";
 
 interface BillingProps {
   stripePromises: Promise<
@@ -63,7 +64,7 @@ export async function Billing({ stripePromises }: BillingProps) {
             <CardFooter className="pt-4">
               {item.name === "Free" ? (
                 <Button className="w-full" asChild>
-                  <Link href="/dashboard">
+                  <Link href={Paths.Dashboard}>
                     Get started
                     <span className="sr-only">Get started</span>
                   </Link>

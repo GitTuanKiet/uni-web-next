@@ -19,7 +19,7 @@ import {
   AlertDialogTrigger,
 } from "@/components";
 import { logout } from "@/lib/auth/actions";
-import { Info_App } from "@/lib/constants";
+import { Info_App, Paths } from "@/lib/constants";
 import { toast } from "@/hooks/use_toast";
 
 export const UserDropdown = ({
@@ -46,13 +46,13 @@ export const UserDropdown = ({
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="cursor-pointer text-muted-foreground" asChild>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href={Paths.Dashboard}>Dashboard</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer text-muted-foreground" asChild>
-            <Link href="/dashboard/billing">Billing</Link>
+            <Link href={Paths.Billing}>Billing</Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer text-muted-foreground" asChild>
-            <Link href="/dashboard/settings">Settings</Link>
+            <Link href={Paths.Settings}>Settings</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

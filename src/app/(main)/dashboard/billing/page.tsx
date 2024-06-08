@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle, ExclamationTriangleIcon } from "@/components";
 import { env } from "@/env";
 import { validateRequest } from "@/lib/auth/validate-request";
-import { Info_App } from "@/lib/constants";
+import { Info_App, Paths } from "@/lib/constants";
 import { api } from "@/trpc/server";
 import * as React from "react";
 import { Billing } from "./_components/BillingPage";
@@ -20,7 +20,7 @@ export default async function BillingPage() {
   const { user } = await validateRequest();
 
   if (!user) {
-    redirect("/login");
+    redirect(Paths.Login);
   }
 
   const stripePromises = Promise.all([api.stripe.getPlans.query(), api.stripe.getPlan.query()]);

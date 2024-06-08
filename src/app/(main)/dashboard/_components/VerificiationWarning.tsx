@@ -1,5 +1,6 @@
 import { Button, Alert, AlertDescription, AlertTitle, ExclamationTriangleIcon } from "@/components";
 import { validateRequest } from "@/lib/auth/validate-request";
+import { Paths } from "@/lib/constants";
 import Link from "next/link";
 
 export async function VerificiationWarning() {
@@ -17,7 +18,7 @@ export async function VerificiationWarning() {
           </AlertDescription>
         </div>
         <Button size="sm" asChild>
-          <Link href="/verify-email">Verify Email</Link>
+          <Link href={Paths.VerifyEmail}>Verify Account</Link>
         </Button>
       </div>
     </Alert>

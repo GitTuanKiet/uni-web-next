@@ -5,6 +5,7 @@ import * as React from "react";
 import { Button, ExclamationTriangleIcon } from "@/components";
 import type { ManageSubscriptionInput } from "@/lib/api/routers/stripe/stripe.input";
 import { api } from "@/trpc/react";
+import { Paths } from "@/lib/constants";
 import { toast } from "@/hooks/use_toast";
 
 export function ManageSubscriptionForm({
@@ -29,7 +30,7 @@ export function ManageSubscriptionForm({
         });
 
         if (session) {
-          window.location.href = session.url ?? "/dashboard/billing";
+          window.location.href = session.url ?? Paths.Billing;
         }
       } catch (err) {
         err instanceof Error

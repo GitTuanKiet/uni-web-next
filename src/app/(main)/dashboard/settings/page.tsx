@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-
+import { Paths } from "@/lib/constants";
 import { env } from "@/env";
 import { validateRequest } from "@/lib/auth/validate-request";
 
@@ -14,7 +14,7 @@ export default async function BillingPage() {
   const { user } = await validateRequest();
 
   if (!user) {
-    redirect("/login");
+    redirect(Paths.Login);
   }
 
   return (

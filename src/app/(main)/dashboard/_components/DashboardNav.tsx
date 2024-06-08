@@ -3,24 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FileTextIcon, CreditCard, GearIcon } from "@/components";
-
+import { Paths } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const items = [
   {
     title: "ApiKeys",
-    href: "/dashboard",
+    href: Paths.Dashboard,
     icon: FileTextIcon,
   },
 
   {
     title: "Billing",
-    href: "/dashboard/billing",
+    href: Paths.Billing,
     icon: CreditCard,
   },
   {
     title: "Settings",
-    href: "/dashboard/settings",
+    href: Paths.Settings,
     icon: GearIcon,
   },
 ];

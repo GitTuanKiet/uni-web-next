@@ -28,7 +28,7 @@ export default async function DashboardPage({ searchParams }: Props) {
   
   const client_id = cookies().get("client_id")?.value ?? null;
   if (client_id) {
-    redirect("/login/redirect?client_id=" + client_id);
+    redirect(`${Paths.Login}/redirect?client_id=` + client_id);
   }
 
   const promises = Promise.all([

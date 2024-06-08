@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-dom";
 import Link from "next/link";
-import { Info_App } from "@/lib/constants";
+import { Info_App, Paths } from "@/lib/constants";
 import { signup } from "@/lib/auth/actions";
 import {
   Button, Input, Label,
@@ -70,7 +70,7 @@ export function Signup() {
             </p>
           ) : null}
           <div>
-            <Link href={"/login"}>
+            <Link href={Paths.Login}>
               <span className="p-0 text-xs font-medium underline-offset-4 hover:underline">
                 Already signed up? Login instead.
               </span>
@@ -79,7 +79,7 @@ export function Signup() {
 
           <SubmitButton className="w-full"> Sign Up</SubmitButton>
           <Button variant="outline" className="w-full" asChild>
-            <Link href="/">Cancel</Link>
+            <Link href={Paths.Home}>Cancel</Link>
           </Button>
         </form>
       </CardContent>
