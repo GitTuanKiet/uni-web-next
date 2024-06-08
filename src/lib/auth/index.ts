@@ -4,7 +4,7 @@ import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
 import { env } from "@/env.js";
 import { db } from "@drizzle/db";
 import { sessions, users, type User as DbUser } from "@drizzle/db/schema";
-import { absoluteUrl } from "@/lib/utils";
+import { absoluteUrl, prefixPath } from "@/lib/utils";
 
 // nodejs 18 or lower
 // import { webcrypto } from "node:crypto";
@@ -41,13 +41,13 @@ export const lucia = new Lucia(adapter, {
 export const discord = new Discord(
   env.DISCORD_CLIENT_ID,
   env.DISCORD_CLIENT_SECRET,
-  absoluteUrl("/login/discord/callback"),
+  absoluteUrl(prefixPath("/login/discord/callback")),
 );
 
 export const google = new Google(
   env.GOOGLE_CLIENT_ID,
   env.GOOGLE_CLIENT_SECRET,
-  absoluteUrl("/login/google/callback"),
+  absoluteUrl(prefixPath("/login/google/callback")),
 );
 
 declare module "lucia" {
