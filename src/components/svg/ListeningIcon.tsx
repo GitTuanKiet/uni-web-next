@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils/';
 
-export default function ListeningIcon({ className }) {
+export default function ListeningIcon({ className = '' }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
