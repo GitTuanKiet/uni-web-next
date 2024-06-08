@@ -1,6 +1,6 @@
 import { db } from "@drizzle/db";
 import { type ApiKey } from "@drizzle/db/schema";
-import { RateLimit } from "@lib/utils";
+import { RateLimit } from "@/lib/utils";
 
 class UsageKey {
   private readonly rateLimit: RateLimit;
@@ -10,7 +10,7 @@ class UsageKey {
   }
 
   async validateRequest(secretKey: string): Promise<
-  { apiKey: ApiKey; error: null } | { apiKey: null, error: string }
+  { apiKey: ApiKey | null, error: string | null }
   > {
     if (!this.rateLimit.canRequestKey(secretKey)) {
       return {

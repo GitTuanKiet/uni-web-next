@@ -2,9 +2,9 @@ import { cookies } from "next/headers";
 import { generateId } from "lucia";
 import { OAuth2RequestError } from "arctic";
 import { eq } from "drizzle-orm";
-import { discord, lucia } from "@lib/auth";
+import { discord, lucia } from "@/lib/auth";
 import { db } from "@drizzle/db";
-import { Paths } from "@lib/constants";
+import { Paths } from "@/lib/constants";
 import { users, accounts, profiles, customers } from "@drizzle/db/schema";
 
 export async function GET(request: Request): Promise<Response> {

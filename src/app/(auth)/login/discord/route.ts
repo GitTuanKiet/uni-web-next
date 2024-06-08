@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { generateState } from "arctic";
-import { discord } from "@lib/auth";
+import { discord } from "@/lib/auth";
 import { env } from "@/env";
 
 export async function GET(): Promise<Response> {

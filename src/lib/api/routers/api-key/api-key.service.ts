@@ -1,5 +1,5 @@
 import { generateId } from "lucia";
-import type { ProtectedTRPCContext } from "@lib/api/trpc";
+import type { ProtectedTRPCContext } from "@/lib/api/trpc";
 import type {
   CreateApiKeyInput,
   DeleteApiKeyInput,

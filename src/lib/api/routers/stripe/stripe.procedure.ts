@@ -1,4 +1,4 @@
-import { createTRPCRouter, protectedProcedure } from "@lib/api/trpc";
+import { createTRPCRouter, protectedProcedure } from "@/lib/api/trpc";
 import * as services from "./stripe.service";
 import * as inputs from "./stripe.input";
 

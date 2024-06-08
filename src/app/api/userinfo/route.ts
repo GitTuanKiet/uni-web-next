@@ -1,9 +1,9 @@
-import { validateRequest } from "@lib/auth/validate-request";
+import { validateRequest } from "@/lib/auth/validate-request";
 
 export async function GET(): Promise<Response> {
   const { user } = await validateRequest();
   if (!user) {
-    return new Response(null, { status: 401 });
+    return new Response(null, { status: 404 });
   }
   
   return new Response(JSON.stringify(user), {

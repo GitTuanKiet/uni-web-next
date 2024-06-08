@@ -9,7 +9,7 @@ import { generateId, Scrypt } from "lucia";
 import { isWithinExpirationDate, TimeSpan, createDate } from "oslo";
 import { generateRandomString, alphabet } from "oslo/crypto";
 import { eq } from "drizzle-orm";
-import { lucia } from "@lib/auth";
+import { lucia } from "@/lib/auth";
 import { db } from "@drizzle/db";
 import {
   loginSchema,
@@ -17,7 +17,7 @@ import {
   type LoginInput,
   type SignupInput,
   resetPasswordSchema,
-} from "@lib/validators/auth";
+} from "@/lib/validators/auth";
 import {
   emailVerificationCodes,
   passwordResetTokens,
@@ -26,9 +26,9 @@ import {
   profiles,
   customers,
 } from "@drizzle/db/schema";
-import { sendMail, EmailTemplate } from "@lib/components/email";
-import { validateRequest } from "@lib/auth/validate-request";
-import { Paths } from "@lib/constants";
+import { sendMail, EmailTemplate } from "@/components/email";
+import { validateRequest } from "@/lib/auth/validate-request";
+import { Paths } from "@/lib/constants";
 import { env } from "@/env";
 
 export interface ActionResponse<T> {

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@lib/components/ui/card";
-import { SendResetEmail } from "./send-reset-email";
-import { validateRequest } from "@lib/auth/validate-request";
-import { Paths } from "@lib/constants";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components";
+import { SendResetEmail } from "./SendResetEmail";
+import { validateRequest } from "@/lib/auth/validate-request";
+import { Paths } from "@/lib/constants";
 
 export const metadata = {
   title: "Forgot Password",

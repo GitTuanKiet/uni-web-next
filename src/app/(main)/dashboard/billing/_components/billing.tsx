@@ -1,19 +1,17 @@
 import Link from "next/link";
 
-import { CheckIcon } from "@lib/components/icons";
-
-import { Button } from "@lib/components/ui/button";
 import {
-  Card,
+  Button, Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@lib/components/ui/card";
-import { formatDate } from "@lib/utils";
+  CheckIcon
+} from "@/components";
+import { formatDate } from "@/lib/utils";
 import { type RouterOutputs } from "@/trpc/shared";
-import { ManageSubscriptionForm } from "./manage-subscription-form";
+import { ManageSubscriptionForm } from "./ManageSubscriptionForm";
 
 interface BillingProps {
   stripePromises: Promise<

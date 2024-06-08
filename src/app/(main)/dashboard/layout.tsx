@@ -1,5 +1,5 @@
-import { DashboardNav } from "./_components/dashboard-nav";
-import { VerificiationWarning } from "./_components/verificiation-warning";
+import { DashboardNav } from "./_components/DashboardNav";
+import { VerificiationWarning } from "./_components/VerificiationWarning";
 
 interface Props {
   children: React.ReactNode;

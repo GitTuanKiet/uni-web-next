@@ -1,11 +1,12 @@
 import "@/styles/globals.css";
+// import "@/styles/mobile.css";
+// import "@/styles/style.css";
 
-import { ThemeProvider } from "@lib/components/layout/theme-provider";
 import { TRPCReactProvider } from "@/trpc/react";
-import { Toaster } from "@lib/components/ui/toaster";
-import { Info_App } from "@lib/constants";
-import { fontSans } from "@lib/fonts";
-import { cn } from "@lib/utils";
+import { ThemeProvider, Toaster } from "@/components";
+import { Info_App } from "@/lib/constants";
+import { fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {

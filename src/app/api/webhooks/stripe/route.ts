@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import type Stripe from "stripe";
 
 import { env } from "@/env";
-import { stripe } from "@lib/stripe";
+import { stripe } from "@/lib/stripe";
 import { db } from "@drizzle/db";
 import { customers } from "@drizzle/db/schema";
 import { eq } from "drizzle-orm";

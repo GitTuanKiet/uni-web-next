@@ -1,5 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@lib/components/ui/card";
-import { ResetPassword } from "./reset-password";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components";
+import { ResetPassword } from "./ResetPassword";
 
 export const metadata = {
   title: "Reset Password",

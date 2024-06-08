@@ -1,7 +1,7 @@
 import { freePlan, proPlan, subscriptionPlans } from "@/subscriptions/data";
-import type { ProtectedTRPCContext } from "@lib/api/trpc";
-import { stripe } from "@lib/stripe";
-import { absoluteUrl, formatPrice } from "@lib/utils";
+import type { ProtectedTRPCContext } from "@/lib/api/trpc";
+import { stripe } from "@/lib/stripe";
+import { absoluteUrl, formatPrice } from "@/lib/utils";
 import type { ManageSubscriptionInput } from "./stripe.input";
 
 export const getStripePlans = async (ctx: ProtectedTRPCContext) => {

@@ -1,6 +1,6 @@
 import { type MetadataRoute } from "next";
 
-import { absoluteUrl } from "@lib/utils";
+import { absoluteUrl } from "@/lib/utils";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = ["", "/dashboard", "/dashboard/billing"].map((route) => ({

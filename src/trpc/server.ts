@@ -7,8 +7,8 @@ import { type TRPCErrorResponse } from "@trpc/server/rpc";
 import { cache } from "react";
 import { headers } from "next/headers";
 
-import { appRouter, type AppRouter } from "@lib/api/root";
-import { createTRPCContext } from "@lib/api/trpc";
+import { appRouter, type AppRouter } from "@/lib/api/root";
+import { createTRPCContext } from "@/lib/api/trpc";
 import { transformer } from "./shared";
 
 /**

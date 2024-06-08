@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import { SubmitButton } from "@lib/components/submit-button";
 import {
   Card,
   CardContent,
@@ -7,10 +6,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@lib/components/ui/card";
-import { logout } from "@lib/auth/actions";
-import { validateRequest } from "@lib/auth/validate-request";
-import { Paths } from "@lib/constants";
+  SubmitButton
+} from "@/components";
+import { logout } from "@/lib/auth/actions";
+import { validateRequest } from "@/lib/auth/validate-request";
+import { Paths } from "@/lib/constants";
 
 export default async function AccountPage() {
   const { user } = await validateRequest();

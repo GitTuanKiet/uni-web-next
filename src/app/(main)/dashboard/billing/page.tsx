@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { ExclamationTriangleIcon } from "@lib/components/icons";
-
-import { Alert, AlertDescription, AlertTitle } from "@lib/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle, ExclamationTriangleIcon } from "@/components";
 import { env } from "@/env";
-import { validateRequest } from "@lib/auth/validate-request";
-import { Info_App } from "@lib/constants";
+import { validateRequest } from "@/lib/auth/validate-request";
+import { Info_App } from "@/lib/constants";
 import { api } from "@/trpc/server";
 import * as React from "react";
-import { Billing } from "./_components/billing";
-import { BillingSkeleton } from "./_components/billing-skeleton";
+import { Billing } from "./_components/Billing";
+import { BillingSkeleton } from "./_components/BillingSkeleton";
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),

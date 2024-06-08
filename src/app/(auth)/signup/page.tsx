@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import { Signup } from "./signup";
-import { validateRequest } from "@lib/auth/validate-request";
-import { Paths } from "@lib/constants";
+import { Signup } from "./Signup";
+import { validateRequest } from "@/lib/auth/validate-request";
+import { Paths } from "@/lib/constants";
 
 export const metadata = {
   title: "Sign Up",

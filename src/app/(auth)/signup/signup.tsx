@@ -2,14 +2,13 @@
 
 import { useFormState } from "react-dom";
 import Link from "next/link";
-import { PasswordInput } from "@lib/components/password-input";
-import { Button } from "@lib/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@lib/components/ui/card";
-import { Input } from "@lib/components/ui/input";
-import { Info_App } from "@lib/constants";
-import { Label } from "@lib/components/ui/label";
-import { signup } from "@lib/auth/actions";
-import { SubmitButton } from "@lib/components/submit-button";
+import { Info_App } from "@/lib/constants";
+import { signup } from "@/lib/auth/actions";
+import {
+  Button, Input, Label,
+  Card, CardContent, CardDescription, CardHeader, CardTitle,
+  PasswordInput, SubmitButton 
+} from "@/components";
 
 export function Signup() {
   const [state, formAction] = useFormState(signup, null);

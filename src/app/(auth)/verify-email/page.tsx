@@ -1,8 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@lib/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components";
 import { redirect } from "next/navigation";
-import { validateRequest } from "@lib/auth/validate-request";
-import { VerifyCode } from "./verify-code";
-import { Paths } from "@lib/constants";
+import { validateRequest } from "@/lib/auth/validate-request";
+import { VerifyCode } from "./VerifyCode";
+import { Paths } from "@/lib/constants";
 
 export const metadata = {
   title: "Verify Email",

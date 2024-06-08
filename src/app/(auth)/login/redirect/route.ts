@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { validateRequest } from "@lib/auth/validate-request";
+import { validateRequest } from "@/lib/auth/validate-request";
 import { env } from "@/env";
 
 export async function GET() {
@@ -12,10 +12,14 @@ export async function GET() {
       const redirectUrl = Buffer.from(base64, "base64").toString("utf-8");
       cookies().set("client_id", "", {
         domain: env.NEXT_PUBLIC_APP_DOMAIN,
-        expires: new Date(0)
+        expires: new Date(0),
       });
 
       return redirect(redirectUrl);
+    } else {
+      return new Response(null, { status: 403 });
     }
+  } else {
+    return new Response(null, { status: 400 });
   }
 }

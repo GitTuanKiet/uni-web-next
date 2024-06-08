@@ -7,8 +7,8 @@
  * need to use are documented accordingly near the end.
  */
 
-import { uncachedValidateRequest } from "@lib/auth/validate-request";
-import { stripe } from "@lib/stripe";
+import { uncachedValidateRequest } from "@/lib/auth/validate-request";
+import { stripe } from "@/lib/stripe";
 import { db } from "@drizzle/db";
 import { initTRPC, TRPCError, type inferAsyncReturnType } from "@trpc/server";
 import superjson from "superjson";

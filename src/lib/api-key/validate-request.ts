@@ -4,7 +4,7 @@ import type { ApiKey } from "@drizzle/db/schema";
 import { usageKey } from ".";
 
 export const uncachedValidateRequest = async (): Promise<
-  { result: ApiKey | string }
+  { apiKey: ApiKey | null, error?: string }
 > => {
   try {
     const secretKey = headers().get("x-api-key");
@@ -15,12 +15,12 @@ export const uncachedValidateRequest = async (): Promise<
     const { apiKey, error } = await usageKey.validateRequest(secretKey);
 
     if (!apiKey) {
-      throw new Error(error);
+      throw new Error(error!);
     }
 
-    return { result: apiKey };
+    return { apiKey };
   } catch (error) {
-    return { result: (error as Error).message };
+    return { apiKey: null, error: (error as Error).message };
   }
 };
 
