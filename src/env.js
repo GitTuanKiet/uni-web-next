@@ -34,7 +34,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_PREFIX: z.string().default(""),
     NEXT_PUBLIC_APP_URL: z.string().url(),
     NEXT_PUBLIC_APP_DOMAIN: z.string().default("localhost"),
   },
@@ -59,6 +59,7 @@ export const env = createEnv({
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     STRIPE_PRO_MONTHLY_PLAN_ID: process.env.STRIPE_PRO_MONTHLY_PLAN_ID,
     // Client-side env vars
+    NEXT_PUBLIC_PREFIX: process.env.NEXT_PUBLIC_PREFIX,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_APP_DOMAIN: process.env.NEXT_PUBLIC_APP_DOMAIN,
   },

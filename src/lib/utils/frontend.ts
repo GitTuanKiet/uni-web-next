@@ -78,3 +78,11 @@ export function absoluteUrl(path: string) {
 export function randomApiKeyName() {
   return `API Key ${Math.floor(Math.random() * 1000)}`;
 }
+
+//====================================================
+//          FUNCTION: prefixPath
+//====================================================
+// Function to prefix path
+export function prefixPath(path: string) {
+  return `${env.NEXT_PUBLIC_PREFIX}${path}`;
+}

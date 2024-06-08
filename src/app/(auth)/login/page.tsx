@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { validateRequest } from "@/lib/auth/validate-request";
 import { Paths } from "@/lib/constants";
-import { Login } from "./Login";
+import { Login } from "./LoginPage";
 import { env } from "@/env";
 
 export const metadata = {

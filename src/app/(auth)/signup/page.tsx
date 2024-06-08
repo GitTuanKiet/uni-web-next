@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { Signup } from "./Signup";
+import { Signup } from "./SignupPage";
 import { validateRequest } from "@/lib/auth/validate-request";
 import { Paths } from "@/lib/constants";
 

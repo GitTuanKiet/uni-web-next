@@ -7,7 +7,7 @@ import { validateRequest } from "@/lib/auth/validate-request";
 import { Info_App } from "@/lib/constants";
 import { api } from "@/trpc/server";
 import * as React from "react";
-import { Billing } from "./_components/Billing";
+import { Billing } from "./_components/BillingPage";
 import { BillingSkeleton } from "./_components/BillingSkeleton";
 
 export const metadata: Metadata = {
