@@ -167,7 +167,7 @@ export async function logout(): Promise<{ error: string } | void> {
   await lucia.invalidateSession(session.id);
   const sessionCookie = lucia.createBlankSessionCookie();
   cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
-  return redirect("/");
+  return redirect(Paths.Login);
 }
 
 export async function resendVerificationEmail(): Promise<{

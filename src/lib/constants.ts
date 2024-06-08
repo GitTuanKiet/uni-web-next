@@ -18,6 +18,7 @@ export const Paths = {
   VerifyEmail: prefixPath("/verify-email"),
   ResetPassword: prefixPath("/reset-password"),
   Billing: prefixPath("/dashboard/billing"),
+  Settings: prefixPath("/dashboard/settings"),
 }
 
 export const Info_App = {
@@ -31,7 +32,6 @@ export const Info_App = {
 
 export const routes = [
   { name: "Dashboard", href: Paths.Dashboard },
-  { name: "Technologies", href: prefixPath("/#technologies") },
   { name: "Documentation", href: prefixPath("/#documentation") },
 ] as const;
 
