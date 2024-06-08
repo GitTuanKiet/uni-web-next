@@ -69,7 +69,7 @@ export function formatPrice(price: number | string, options: Intl.NumberFormatOp
 //====================================================
 // Function to get absolute URL
 export function absoluteUrl(path: string) {
-  return new URL(path, env.NEXT_PUBLIC_APP_URL).href;
+  return new URL(prefixPath(path), env.NEXT_PUBLIC_APP_URL).href;
 }
 
 //====================================================
