@@ -1,7 +1,7 @@
 // import { prefixPath } from "./utils";
 
 const prefixPath = (path: string) => {
-  return `${env.NEXT_PUBLIC_PREFIX}${path}`;
+  return `${process.env.NEXT_PUBLIC_PREFIX}${path}`;
 }
 
 export const DATABASE_PREFIX = "uni";
