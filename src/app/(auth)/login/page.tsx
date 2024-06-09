@@ -13,7 +13,7 @@ export default async function LoginPage() {
   const { user } = await validateRequest();
 
   if (user) {
-    await fetch(`${env.NEXT_PUBLIC_APP_URL}/login/redirect`);
+    await fetch(`${env.NEXT_PUBLIC_APP_URL}${Paths.Login}/redirect`);
     redirect(Paths.Dashboard);
   }
 

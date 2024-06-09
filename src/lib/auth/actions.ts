@@ -246,7 +246,7 @@ export async function sendPasswordResetLink(
 
     const verificationToken = await generatePasswordResetToken(user.id);
 
-    const verificationLink = `${env.NEXT_PUBLIC_APP_URL}/reset-password/${verificationToken}`;
+    const verificationLink = `${env.NEXT_PUBLIC_APP_URL}${Paths.ResetPassword}/${verificationToken}`;
 
     await sendMail(user.email, EmailTemplate.PasswordReset, { link: verificationLink });
 

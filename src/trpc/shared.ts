@@ -1,5 +1,6 @@
 import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 import superjson from "superjson";
+import { prefixPath } from "@/lib/utils";
 
 import { type AppRouter } from "@/lib/api/root";
 
@@ -12,7 +13,7 @@ function getBaseUrl() {
 }
 
 export function getUrl() {
-  return getBaseUrl() + "/api/trpc";
+  return getBaseUrl() + prefixPath("/api/trpc");
 }
 
 /**
