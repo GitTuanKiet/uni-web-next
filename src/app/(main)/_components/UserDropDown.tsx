@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuLabel,
@@ -36,7 +36,7 @@ export const UserDropdown = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={className}>
-        <Image
+        <img
           className="block h-8 w-8 rounded-full leading-none"
           src={avatar ?? "https://source.boringavatars.com/marble/60/" + email}
           width={500}
