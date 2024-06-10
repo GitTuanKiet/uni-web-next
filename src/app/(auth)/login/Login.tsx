@@ -9,6 +9,7 @@ import {
   DiscordLogoIcon, GoogleLogoIcon,
   PasswordInput, SubmitButton
 } from "@/components";
+import LogoIcon from "@/app/logo";
 import { Info_App, Paths } from "@/lib/constants";
 import { login } from "@/lib/auth/actions";
 
@@ -17,9 +18,9 @@ export function Login() {
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle>{Info_App.title} Log In</CardTitle>
-        <CardDescription>Log in to your account to access your dashboard</CardDescription>
+      <CardHeader className="justify-center items-center">
+        <CardTitle><LogoIcon className="h-20 w-32"/></CardTitle>
+        <CardDescription>Log in to {Info_App.title}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">

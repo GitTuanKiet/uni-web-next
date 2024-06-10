@@ -1,15 +1,16 @@
 import Link from "next/link";
 import {
   ThemeToggle,
-  Button, RocketIcon, HamburgerMenuIcon,
+  Button, HamburgerMenuIcon,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components";
+import LogoIcon from "@/app/logo";
 import { UserDropdown } from "./UserDropDown";
 import { validateRequest } from "@/lib/auth/validate-request";
-import { routes, Info_App, Paths } from "@/lib/constants";
+import { routes, Paths } from "@/lib/constants";
 
 export const Header = async () => {
   const { user } = await validateRequest();
@@ -38,7 +39,7 @@ export const Header = async () => {
           </DropdownMenuContent>
         </DropdownMenu>
         <Link className="flex items-center justify-center text-xl font-medium" href="/">
-          <RocketIcon className="mr-2 h-5 w-5" /> {Info_App.title}
+          <LogoIcon />
         </Link>
         <nav className="ml-10 hidden gap-4 sm:gap-6 md:flex">
           {routes.map(({ name, href }) => (

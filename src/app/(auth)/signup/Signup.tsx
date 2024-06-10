@@ -9,15 +9,16 @@ import {
   Card, CardContent, CardDescription, CardHeader, CardTitle,
   PasswordInput, SubmitButton 
 } from "@/components";
+import LogoIcon from "@/app/logo";
 
 export function Signup() {
   const [state, formAction] = useFormState(signup, null);
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle>{Info_App.title} Sign Up</CardTitle>
-        <CardDescription>Sign up to start using the app</CardDescription>
+      <CardHeader className="justify-center items-center">
+        <CardTitle><LogoIcon className="h-20 w-32"/></CardTitle>
+        <CardDescription>Sign up for {Info_App.title} to get started</CardDescription>
       </CardHeader>
       <CardContent>
         {/* <div className="my-2 flex items-center">
