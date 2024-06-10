@@ -18,11 +18,11 @@ const items = [
     href: Paths.Billing,
     icon: CreditCard,
   },
-  {
-    title: "Settings",
-    href: Paths.Settings,
-    icon: GearIcon,
-  },
+  // {
+  //   title: "Settings",
+  //   href: Paths.Settings,
+  //   icon: GearIcon,
+  // },
 ];
 
 interface Props {

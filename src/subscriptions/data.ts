@@ -11,7 +11,6 @@ export const freePlan: SubscriptionPlan = {
   name: "Free",
   description: "The free plan is limited to 5 apiKeys.",
   features: [
-    "Up to 6 apiKeys",
     "5 content per month",
     "Max 500 words per content",
     "Basic content types",
@@ -27,7 +26,6 @@ export const proPlan: SubscriptionPlan = {
   name: "Pro",
   description: "The Pro plan has unlimited apiKeys.",
   features: [
-    "Unlimited apiKeys",
     "50 content per month",
     "Max 2000 words per content",
     "Content personalization",
@@ -47,7 +45,6 @@ export const proPlan: SubscriptionPlan = {
 //   name: "Business",
 //   description: "The Business plan no limits.",
 //   features: [
-//     "Unlimited apiKeys",
 //     "Unlimited content per month",
 //     "Unlimited words per content",
 //     "Content personalization",

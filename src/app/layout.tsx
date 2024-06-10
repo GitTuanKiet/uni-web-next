@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 // import "@/styles/style.css";
 
 import { TRPCReactProvider } from "@/trpc/react";
-import { ThemeProvider, Toaster } from "@/components";
+import { ThemeProvider } from "@/components";
 import { Info_App } from "@/lib/constants";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -41,7 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           disableTransitionOnChange
         >
           <TRPCReactProvider>{children}</TRPCReactProvider>
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>

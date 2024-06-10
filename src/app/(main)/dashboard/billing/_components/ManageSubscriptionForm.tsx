@@ -6,7 +6,7 @@ import { Button, ExclamationTriangleIcon } from "@/components";
 import type { ManageSubscriptionInput } from "@/lib/api/routers/stripe/stripe.input";
 import { api } from "@/trpc/react";
 import { Paths } from "@/lib/constants";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 
 export function ManageSubscriptionForm({
   isPro,
@@ -34,15 +34,11 @@ export function ManageSubscriptionForm({
         }
       } catch (err) {
         err instanceof Error
-          ? toast({
+          ? toast.error(err.message, {
               icon: <ExclamationTriangleIcon className="h-5 w-5" />,
-              title: err.message,
-              variant: "destructive",
             })
-          : toast({
+          : toast.error("An error occurred", {
               icon: <ExclamationTriangleIcon className="h-5 w-5 text-destructive" />,
-              title: "An error occurred",
-              description: "Please try again.",
             });
       }
     });

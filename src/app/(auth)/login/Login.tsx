@@ -87,7 +87,7 @@ export function Login() {
           ) : null}
           <SubmitButton className="w-full">Log In</SubmitButton>
           <Button variant="outline" className="w-full" asChild>
-            <Link href={Paths.Home}>Cancel</Link>
+            <Link href={'/'}>Cancel</Link>
           </Button>
         </form>
       </CardContent>

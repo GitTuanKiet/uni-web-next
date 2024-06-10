@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuLabel,
@@ -10,7 +11,8 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  Button, LoadingButton, Avatar, AvatarImage, ExclamationTriangleIcon,
+  Button, LoadingButton,
+  ExclamationTriangleIcon,
   AlertDialog,
   AlertDialogContent,
   AlertDialogDescription,
@@ -20,7 +22,7 @@ import {
 } from "@/components";
 import { logout } from "@/lib/auth/actions";
 import { Info_App, Paths } from "@/lib/constants";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 
 export const UserDropdown = ({
   email,
@@ -34,12 +36,13 @@ export const UserDropdown = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={className}>
-        <Avatar className="block h-8 w-8 rounded-full leading-none">
-            <AvatarImage
-              src={avatar ?? "https://source.boringavatars.com/marble/60/" + email}
-              alt="Avatar"
-            />
-        </Avatar>
+        <Image
+          className="block h-8 w-8 rounded-full leading-none"
+          src={avatar ?? "https://source.boringavatars.com/marble/60/" + email}
+          width={500}
+          height={500}
+          alt="Avatar"
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuLabel className="text-muted-foreground">{email}</DropdownMenuLabel>
@@ -51,9 +54,9 @@ export const UserDropdown = ({
           <DropdownMenuItem className="cursor-pointer text-muted-foreground" asChild>
             <Link href={Paths.Billing}>Billing</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer text-muted-foreground" asChild>
+          {/* <DropdownMenuItem className="cursor-pointer text-muted-foreground" asChild>
             <Link href={Paths.Settings}>Settings</Link>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
 
@@ -73,14 +76,11 @@ const SignoutConfirmation = () => {
     setIsLoading(true);
     try {
       await logout();
-      toast({
-        title: "Signed out successfully",
-      });
+      toast.info("Signed out successfully");
     } catch (error) {
       if (error instanceof Error) {
-        toast({
+        toast.error(error.message, {
           icon: <ExclamationTriangleIcon className="h-4 w-4 text-destructive" />,
-          title: error.message,
         });
       }
     } finally {

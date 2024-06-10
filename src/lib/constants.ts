@@ -1,7 +1,11 @@
 // import { prefixPath } from "./utils";
 
 const prefixPath = (path: string) => {
-  return `${process.env.NEXT_PUBLIC_PREFIX}${path}`;
+  let prefix = "";
+  if (process.env.NEXT_PUBLIC_PREFIX) {
+    prefix = process.env.NEXT_PUBLIC_PREFIX;
+  }
+  return `${prefix}${path}`;
 }
 
 export const DATABASE_PREFIX = "uni";
@@ -18,7 +22,7 @@ export const Paths = {
   VerifyEmail: prefixPath("/verify-email"),
   ResetPassword: prefixPath("/reset-password"),
   Billing: prefixPath("/dashboard/billing"),
-  Settings: prefixPath("/dashboard/settings"),
+  // Settings: prefixPath("/dashboard/settings"),
 }
 
 export const Info_App = {

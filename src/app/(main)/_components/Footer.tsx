@@ -10,13 +10,12 @@ export const Footer = () => {
           <BrainCircuit className="mr-2 h-6 w-6" />
           @{Info_App.title} platform{" "}
           <a className="underline underline-offset-4" href={Info_App.facebookUrl}>
-            <FacebookLogoIcon className="h-4 w-4 mx-2" />
+            <FacebookLogoIcon className="h-4 w-4 mx-2 dark:bg-white" />
           </a>
           <a className="underline underline-offset-4" href={Info_App.twitterUrl}>
             <TwitterLogoIcon className="h-4 w-4 mx-2" />
           </a>
         </p>
-        <div className="ml-auto">{Info_App.title}</div>
       </div>
     </footer>
   );

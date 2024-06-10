@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 import { sendPasswordResetLink } from "@/lib/auth/actions";
 import {
   Input, Button, SubmitButton, Label,
@@ -18,13 +18,12 @@ export function SendResetEmail() {
 
   useEffect(() => {
     if (state?.success) {
-      toast({ title: "A password reset link has been sent to your email." });
+      toast.success("A password reset link has been sent to your email.");
       router.push(Paths.Login);
     }
     if (state?.error) {
-      toast({
+      toast.error(state.error, {
         icon: <ExclamationTriangleIcon className="h-5 w-5 text-destructive" />,
-        title: state.error
       });
     }
   }, [state?.error, state?.success]);
