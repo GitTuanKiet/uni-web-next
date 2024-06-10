@@ -41,7 +41,7 @@ export async function Billing({ stripePromises }: BillingProps) {
       <section className="grid gap-6 lg:grid-cols-2">
         {plans.map((item) => (
           <Card key={item.name} className="flex flex-col p-2">
-            <CardHeader className="h-full">
+            <CardHeader>
               <CardTitle className="line-clamp-1">{item.name}</CardTitle>
               <CardDescription className="line-clamp-2">{item.description}</CardDescription>
             </CardHeader>

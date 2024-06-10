@@ -9,10 +9,10 @@ function mapPathToProxy(path: string) {
   const pathParts = path.split("/").filter(Boolean);
 
   if (pathParts.length) {
-    const proxy = proxies.find((proxy) => proxy.path === pathParts[0]);
+    const proxy = proxies.find((proxy) => proxy.path === pathParts[1]);
 
     if (proxy) {
-      return `${proxy.target}/${pathParts.slice(1).join("/")}`
+      return `${proxy.target}/${pathParts.slice(2).join("/")}`
     }
   }
 
@@ -46,9 +46,11 @@ async function handler(request: NextRequest) {
   }
 
   const headers = new Headers(request.headers);
+  headers.append("x-user-id", apiKey.userId);
   const req_clone = request.clone();
 
   const backendUrl = new URL(proxyUrl+request.nextUrl.search);
+  console.log(`[proxy] ${request.method} ${backendUrl.toString()}`);
   const requestInit = {
     method: request.method,
     headers,
