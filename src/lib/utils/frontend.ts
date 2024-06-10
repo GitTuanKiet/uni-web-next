@@ -17,7 +17,6 @@ export function cn(...inputs: ClassValue[]) {
 //====================================================
 //          FUNCTION: getExceptionType
 //====================================================
-// Function to get the type of exception
 export const getExceptionType = (error: unknown) => {
   const UnknownException = {
     type: "UnknownException",
@@ -41,7 +40,6 @@ export const getExceptionType = (error: unknown) => {
 //====================================================
 //          FUNCTION: formatDate
 //====================================================
-// Function to format date
 export function formatDate(
   date: Date | string | number,
   options: Intl.DateTimeFormatOptions = {
@@ -55,6 +53,9 @@ export function formatDate(
   }).format(new Date(date));
 }
 
+//====================================================
+//          FUNCTION: formatPrice
+//====================================================
 export function formatPrice(price: number | string, options: Intl.NumberFormatOptions = {}) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -67,7 +68,6 @@ export function formatPrice(price: number | string, options: Intl.NumberFormatOp
 //====================================================
 //          FUNCTION: absoluteUrl
 //====================================================
-// Function to get absolute URL
 export function absoluteUrl(path: string) {
   return new URL(prefixPath(path), env.NEXT_PUBLIC_APP_URL).href;
 }
@@ -82,7 +82,28 @@ export function randomApiKeyName() {
 //====================================================
 //          FUNCTION: prefixPath
 //====================================================
-// Function to prefix path
 export function prefixPath(path: string) {
   return `${env.NEXT_PUBLIC_PREFIX}${path}`;
+}
+
+//====================================================
+//          FUNCTION: fetcher
+//====================================================
+export async function fetcher<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
+  const res = await fetch(input, init);
+
+  if (!res.ok) {
+    const json = await res.json() as { error: string };
+    if (json.error) {
+      const error = new Error(json.error) as Error & {
+        status: number;
+      };
+      error.status = res.status;
+      throw error;
+    } else {
+      throw new Error("An unexpected error occurred");
+    }
+  }
+
+  return res.json() as Promise<T>;
 }

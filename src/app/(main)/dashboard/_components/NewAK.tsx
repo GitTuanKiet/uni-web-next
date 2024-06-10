@@ -1,7 +1,7 @@
 "use client";
 
 import { FilePlusIcon, Button } from "@/components";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 import { api } from "@/trpc/react";
 import { type RouterOutputs } from "@/trpc/shared";
 import { useRouter } from "next/navigation";
@@ -25,8 +25,7 @@ export const NewApiKey = ({ isEligible, setOptimisticApiKeys }: NewApiKeyProps) 
 
   const createApiKey = () => {
     if (!isEligible) {
-      toast({
-        title: (<Link href={Paths.Billing}>Upgrade your plan</Link>) as unknown as string,
+      toast.info(<Link href={Paths.Billing}>Upgrade your plan</Link>, {
         description: "You've reached the limit of api keys for your current plan",
       });
       return;
@@ -52,17 +51,14 @@ export const NewApiKey = ({ isEligible, setOptimisticApiKeys }: NewApiKeyProps) 
             });
           },
           onSuccess: () => {
-            toast({
-              title: "Api Key created",
+            toast.success("Api Key created", {
               description: "Your api key has been created successfully",
             });
             router.refresh();
           },
           onError: () => {
-            toast({
-              title: "An error occurred",
+            toast.error("An error occurred", {
               description: "Please try again",
-              variant: "destructive",
             });
           },
         },

@@ -20,7 +20,7 @@ import {
 } from "@/components";
 import { logout } from "@/lib/auth/actions";
 import { Info_App, Paths } from "@/lib/constants";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 
 export const UserDropdown = ({
   email,
@@ -73,14 +73,11 @@ const SignoutConfirmation = () => {
     setIsLoading(true);
     try {
       await logout();
-      toast({
-        title: "Signed out successfully",
-      });
+      toast.success("Signed out successfully");
     } catch (error) {
       if (error instanceof Error) {
-        toast({
+        toast.error(error.message, {
           icon: <ExclamationTriangleIcon className="h-4 w-4 text-destructive" />,
-          title: error.message,
         });
       }
     } finally {

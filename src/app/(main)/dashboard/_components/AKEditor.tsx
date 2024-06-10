@@ -15,7 +15,7 @@ import {
   Pencil2Icon,
   LoadingButton
 } from "@/components";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 import { api } from "@/trpc/react";
 import { createApiKeySchema } from "@/lib/api/routers/api-key/api-key.input";
 
@@ -39,16 +39,13 @@ export const ApiKeyEditor = ({ apiKey, handleOnClose }: ApiKeyProps) => {
       { id: apiKey.id, ...values },
       {
         onSuccess: () => {
-          toast({
-            title: "Api Key updated",
+          toast.success("Api Key updated", {
             description: "Your api key has been updated successfully",
           });
         },
         onError: () => {
-          toast({
-            title: "An error occurred",
+          toast.error("An error occurred", {
             description: "Failed to update api key",
-            variant: "destructive",
           });
         },
       },

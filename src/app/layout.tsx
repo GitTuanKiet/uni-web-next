@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 // import "@/styles/style.css";
 
 import { TRPCReactProvider } from "@/trpc/react";
-import { ThemeProvider, Toaster } from "@/components";
+import { Providers, TailwindIndicator } from "@/components";
 import { Info_App } from "@/lib/constants";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -34,15 +34,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           fontSans.variable,
         )}
       >
-        <ThemeProvider
+        <Providers
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
           <TRPCReactProvider>{children}</TRPCReactProvider>
-          <Toaster />
-        </ThemeProvider>
+          <TailwindIndicator />
+        </Providers>
       </body>
     </html>
   );

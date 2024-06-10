@@ -11,14 +11,14 @@ export const LIMITED_REQUEST = 60;
 export const INTERVAL_SECONDS = 60;
 
 export const Paths = {
-  Home: prefixPath("/"),
-  Login: prefixPath("/login"),
-  Signup: prefixPath("/signup"),
-  Dashboard: prefixPath("/dashboard"),
-  VerifyEmail: prefixPath("/verify-email"),
-  ResetPassword: prefixPath("/reset-password"),
-  Billing: prefixPath("/dashboard/billing"),
-  Settings: prefixPath("/dashboard/settings"),
+  Home: prefixPath(""),
+  Login: prefixPath("login"),
+  Signup: prefixPath("signup"),
+  Dashboard: prefixPath("dashboard"),
+  VerifyEmail: prefixPath("verify-email"),
+  ResetPassword: prefixPath("reset-password"),
+  Billing: prefixPath("dashboard/billing"),
+  Settings: prefixPath("dashboard/settings"),
 }
 
 export const Info_App = {

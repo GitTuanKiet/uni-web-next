@@ -13,7 +13,7 @@ import { api } from "@/trpc/react";
 import { type RouterOutputs } from "@/trpc/shared";
 import { useRouter } from "next/navigation";
 import * as React from "react";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 import { CopyToClipboard } from "./CopyToClipboard";
 import { ApiKeyEditor } from "./AKEditor";
 
@@ -84,17 +84,14 @@ export const ApiKeyCard = ({ apiKey, setOptimisticApiKeys }: ApiKeyCardProps) =>
                       });
                     },
                     onSuccess: () => {
-                      toast({
-                        title: "Api Key deleted",
+                      toast.success("Api Key deleted", {
                         description: "Your api key has been deleted successfully",
                       });
                       router.refresh();
                     },
                     onError: () => {
-                      toast({
-                        title: "An error occurred",
+                      toast.error("An error occurred", {
                         description: "Failed to delete the api key",
-                        variant: "destructive",
                       });
                     },
                   },

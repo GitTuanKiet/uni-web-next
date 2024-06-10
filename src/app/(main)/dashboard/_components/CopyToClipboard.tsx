@@ -4,7 +4,7 @@ import { Input, Button } from "@/components";
 import { cn } from "@/lib/utils";
 import { ClipboardCopy, ClipboardCheck } from "lucide-react";
 import { useState } from "react";
-import { toast } from "@/hooks/use_toast";
+import { toast } from "sonner";
 
 export const CopyToClipboard = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
@@ -14,9 +14,8 @@ export const CopyToClipboard = ({ text }: { text: string }) => {
       setCopied(false);
     }, 2000);
     await navigator.clipboard.writeText(text);
-    toast({
+    toast.success("Copied to clipboard", {
       icon: <ClipboardCopy className="h-4 w-4" />,
-      title: "Copied to clipboard",
     });
   };
   return (

@@ -8,7 +8,6 @@ import { filterNullish } from "./shared";
 //====================================================
 //          CLASS: RateLimit
 //====================================================
-// RateLimit class to limit the number of requests
 export class RateLimit {
   private limit: number;
   private tokens: number;
