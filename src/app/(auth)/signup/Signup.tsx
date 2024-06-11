@@ -17,16 +17,10 @@ export function Signup() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="justify-center items-center">
-        <CardTitle><LogoIcon className="h-20 w-32"/></CardTitle>
+        <CardTitle><LogoIcon className="h-32 w-40"/></CardTitle>
         <CardDescription>Sign up for {Info_App.title} to get started</CardDescription>
       </CardHeader>
       <CardContent>
-        {/* <div className="my-2 flex items-center">
-          <div className="flex-grow border-t border-muted" />
-          <div className="mx-2 text-muted-foreground">or</div>
-          <div className="flex-grow border-t border-muted" />
-        </div>  */}
-
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label>Email</Label>

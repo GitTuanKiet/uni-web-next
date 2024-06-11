@@ -4,13 +4,16 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import { 
   Label, Input, Button, Card, 
-  CardContent, CardDescription, 
-  CardHeader, CardTitle,
-  DiscordLogoIcon, GoogleLogoIcon,
-  PasswordInput, SubmitButton
+  CardContent, 
+  CardHeader,
+  CardTitle,
+  DiscordLogoIcon,
+  GoogleLogoIcon,
+  PasswordInput,
+  SubmitButton
 } from "@/components";
 import LogoIcon from "@/app/logo";
-import { Info_App, Paths } from "@/lib/constants";
+import { Paths } from "@/lib/constants";
 import { login } from "@/lib/auth/actions";
 
 export function Login() {
@@ -19,8 +22,7 @@ export function Login() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="justify-center items-center">
-        <CardTitle><LogoIcon className="h-20 w-32"/></CardTitle>
-        <CardDescription>Log in to {Info_App.title}</CardDescription>
+        <CardTitle><LogoIcon className="h-32 w-40"/></CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
