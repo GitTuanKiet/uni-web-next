@@ -51,7 +51,6 @@ class PayPal {
   }
 
   async init() {
-    console.log("🚀 ~ PayPal ~ init ~ this.expiresAt < Date.now():", this.expiresAt < Date.now());
     if (this.expiresAt < Date.now()) {
       await this.generateAccessToken();
     }
