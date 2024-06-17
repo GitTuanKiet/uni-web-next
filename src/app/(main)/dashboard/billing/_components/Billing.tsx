@@ -18,10 +18,14 @@ interface BillingProps {
   stripePromises: Promise<
     [RouterOutputs["stripe"]["getPlans"], RouterOutputs["stripe"]["getPlan"]]
   >;
+  paypalPromises: Promise<
+    [RouterOutputs["paypal"]["getPlans"], RouterOutputs["paypal"]["getPlan"]]
+  >;
 }
 
-export async function Billing({ stripePromises }: BillingProps) {
-  const [plans, plan] = await stripePromises;
+export async function Billing({ stripePromises, paypalPromises }: BillingProps) {
+  // const [plans, plan] = await stripePromises;
+  const [plans, plan] = await paypalPromises;
 
   return (
     <>
@@ -34,7 +38,12 @@ export async function Billing({ stripePromises }: BillingProps) {
               : plan.isCanceled
                 ? "Your plan will be canceled on "
                 : "Your plan renews on "}
-            {plan?.stripeCurrentPeriodEnd ? formatDate(plan.stripeCurrentPeriodEnd) : null}
+            {/* {plan?.stripeCurrentPeriodEnd ? formatDate(plan.stripeCurrentPeriodEnd) : null} */}
+            {
+              plan?.paypalCurrentPeriodEnd && plan.paypalCurrentPeriodEnd.getTime() + 86_400_000 > Date.now()
+              ? formatDate(plan.paypalCurrentPeriodEnd)
+              : null
+            }
           </p>
         </Card>
       </section>
@@ -46,10 +55,11 @@ export async function Billing({ stripePromises }: BillingProps) {
               <CardDescription className="line-clamp-2">{item.description}</CardDescription>
             </CardHeader>
             <CardContent className="h-full flex-1 space-y-6">
-              <div className="text-3xl font-bold">
+              {/* <div className="text-3xl font-bold">
                 {item.price}
                 <span className="text-sm font-normal text-muted-foreground">/month</span>
-              </div>
+              </div> */}
+              {item.pricing}
               <div className="space-y-2">
                 {item.features.map((feature, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -64,17 +74,24 @@ export async function Billing({ stripePromises }: BillingProps) {
             <CardFooter className="pt-4">
               {item.name === "Free" ? (
                 <Button className="w-full" asChild>
-                  <Link href={Paths.Dashboard}>
+                  <Link href={Paths.AiContent}>
                     Get started
                     <span className="sr-only">Get started</span>
                   </Link>
                 </Button>
               ) : (
+                // <ManageSubscriptionForm
+                //   stripePriceId={item.stripePriceId}
+                //   isPro={plan?.isPro ?? false}
+                //   stripeCustomerId={plan?.stripeCustomerId}
+                //   stripeSubscriptionId={plan?.stripeSubscriptionId}
+                // />
                 <ManageSubscriptionForm
-                  stripePriceId={item.stripePriceId}
+                  paypalPlanId={item.paypalPlanId}
+                  paypalTrialPlanId={item.paypalTrialPlanId}
                   isPro={plan?.isPro ?? false}
-                  stripeCustomerId={plan?.stripeCustomerId}
-                  stripeSubscriptionId={plan?.stripeSubscriptionId}
+                  paypalPayerId={plan?.paypalPayerId}
+                  paypalSubscriptionId={plan?.paypalSubscriptionId}
                 />
               )}
             </CardFooter>

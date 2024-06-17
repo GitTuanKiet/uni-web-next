@@ -26,6 +26,11 @@ export const env = createEnv({
     STRIPE_API_KEY: z.string().trim().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().trim().min(1),
     STRIPE_PRO_MONTHLY_PLAN_ID: z.string().trim().min(1),
+    PAYPAL_WEBHOOK_ID: z.string().trim().min(1),
+    PAYPAL_CLIENT_ID: z.string().trim().min(1),
+    PAYPAL_CLIENT_SECRET: z.string().trim().min(1),
+    PAYPAL_PRO_MONTHLY_PLAN_ID: z.string().trim().min(1),
+    PAYPAL_PRO_TRIAL_PLAN_ID: z.string().trim().min(1),
   },
 
   /**
@@ -58,6 +63,11 @@ export const env = createEnv({
     STRIPE_API_KEY: process.env.STRIPE_API_KEY,
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     STRIPE_PRO_MONTHLY_PLAN_ID: process.env.STRIPE_PRO_MONTHLY_PLAN_ID,
+    PAYPAL_WEBHOOK_ID: process.env.PAYPAL_WEBHOOK_ID,
+    PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
+    PAYPAL_CLIENT_SECRET: process.env.PAYPAL_CLIENT_SECRET,
+    PAYPAL_PRO_MONTHLY_PLAN_ID: process.env.PAYPAL_PRO_MONTHLY_PLAN_ID,
+    PAYPAL_PRO_TRIAL_PLAN_ID: process.env.PAYPAL_PRO_TRIAL_PLAN_ID,
     // Client-side env vars
     NEXT_PUBLIC_PREFIX: process.env.NEXT_PUBLIC_PREFIX,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,

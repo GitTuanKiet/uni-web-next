@@ -64,12 +64,33 @@ export const customers = pgTable(
   },
   (t) => ({
     userIdx: index("customer_user_idx").on(t.userId),
-    stripeCustomerIdx: index("customer_stripe_customer_id_idx").on(t.stripeCustomerId),
+    // stripeCustomerIdx: index("customer_stripe_customer_id_idx").on(t.stripeCustomerId),
   }),
 );
 
 export type Customer = typeof customers.$inferSelect;
 export type NewCustomer = typeof customers.$inferInsert;
+
+export const payers = pgTable(
+  "payers",
+  {
+    id: varchar("id", { length: 21 }).primaryKey(),
+    userId: varchar("user_id", { length: 21 }).unique().notNull(),
+    email: varchar("email", { length: 255 }).unique().notNull(),
+    paypalSubscriptionId: varchar("paypal_subscription_id", { length: 255 }),
+    paypalPlanId: varchar("paypal_plan_id", { length: 255 }),
+    paypalPayerId: varchar("paypal_payer_id", { length: 255 }),
+    paypalCurrentPeriodEnd: timestamp("paypal_current_period_end"),
+  },
+  (t) => ({
+    userIdx: index("payer_user_idx").on(t.userId),
+    // emailIdx: index("payer_email_idx").on(t.email),
+    // paypalPayerIdx: index("payer_paypal_payer_id_idx").on(t.paypalPayerId),
+  }),
+);
+
+export type Payer = typeof payers.$inferSelect;
+export type NewPayer = typeof payers.$inferInsert;
 
 export const accounts = pgTable(
   "accounts",
@@ -182,6 +203,10 @@ export const userRelations = relations(users, ({ one, many }) => ({
     fields: [users.id],
     references: [customers.userId],
   }),
+  payer: one(payers, {
+    fields: [users.id],
+    references: [payers.userId],
+  }),
   accounts: many(accounts),
   apiKeys: many(apiKeys),
   usageLogs: many(usageLogs),
@@ -217,6 +242,13 @@ export const customerRelations = relations(customers, ({ one }) => ({
   }),
 }));
 
+export const payerRelations = relations(payers, ({ one }) => ({
+  user: one(users, {
+    fields: [payers.userId],
+    references: [users.id],
+  }),
+}));
+
 export const usageLogRelations = relations(usageLogs, ({ one }) => ({
   apiKey: one(apiKeys, {
     fields: [usageLogs.apiKey],
@@ -225,5 +257,9 @@ export const usageLogRelations = relations(usageLogs, ({ one }) => ({
   user: one(users, {
     fields: [usageLogs.userId],
     references: [users.id],
+  }),
+  account: one(accounts, {
+    fields: [usageLogs.userId],
+    references: [accounts.userId],
   }),
 }));

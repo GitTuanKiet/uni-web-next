@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "db:push": "dotenv drizzle-kit push:pg",
-    "db:generate": "dotenv drizzle-kit generate:pg",
-    "db:migrate": "dotenv drizzle/db/migrate.ts",
+    "db:push": "dotenv drizzle-kit push",
+    "db:generate": "drizzle-kit generate --name init",
+    "db:migrate": "dotenv drizzle-kit migrate",
     "db:studio": "dotenv drizzle-kit studio",
     "dev": "next dev",
     "build": "next build",
@@ -15,7 +15,8 @@
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,tsx,json,md}\"",
     "typecheck": "tsc --noEmit",
-    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks/stripe --latest"
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks/stripe --latest",
+    "paypal:listen": "hookdeck logout && hookdeck listen 3000 paypal"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -38,7 +39,7 @@
     "arctic": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "drizzle-orm": "^0.30.8",
+    "drizzle-orm": "^0.31.2",
     "lucia": "3.0.0",
     "lucide-react": "^0.390.0",
     "next": "^14.2.3",
@@ -69,8 +70,9 @@
     "@typescript-eslint/parser": "^7.11.0",
     "autoprefixer": "^10.4.19",
     "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.20.14",
+    "drizzle-kit": "^0.22.7",
     "eslint": "^8.56.0",
+    "hookdeck-cli": "^0.10.1",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",

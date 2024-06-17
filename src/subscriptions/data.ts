@@ -5,6 +5,8 @@ export interface SubscriptionPlan {
   description: string;
   features: string[];
   stripePriceId: string;
+  paypalPlanId: string;
+  paypalTrialPlanId?: string;
 }
 
 export const freePlan: SubscriptionPlan = {
@@ -20,6 +22,7 @@ export const freePlan: SubscriptionPlan = {
     "Basic content performance analytics",
   ],
   stripePriceId: "",
+  paypalPlanId: "",
 };
 
 export const proPlan: SubscriptionPlan = {
@@ -39,6 +42,8 @@ export const proPlan: SubscriptionPlan = {
     "Basic content performance analytics",
   ],
   stripePriceId: env.STRIPE_PRO_MONTHLY_PLAN_ID,
+  paypalPlanId: env.PAYPAL_PRO_MONTHLY_PLAN_ID,
+  paypalTrialPlanId: env.PAYPAL_PRO_TRIAL_PLAN_ID,
 };
 
 // export const businessPlan: SubscriptionPlan = {

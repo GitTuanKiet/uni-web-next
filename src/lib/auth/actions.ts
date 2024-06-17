@@ -25,6 +25,7 @@ import {
   accounts,
   profiles,
   customers,
+  payers
 } from "@drizzle/db/schema";
 import { sendMail, EmailTemplate } from "@/components/email";
 import { validateRequest } from "@/lib/auth/validate-request";
@@ -122,6 +123,7 @@ export async function signup(_: any, formData: FormData): Promise<ActionResponse
   const accountId = generateId(21);
   const profileId = generateId(21);
   const customerId = generateId(21);
+  const payerId = generateId(21);
 
   await db.transaction(async (tx) => {
     const promise_insert_account = tx.insert(accounts).values({
@@ -140,12 +142,17 @@ export async function signup(_: any, formData: FormData): Promise<ActionResponse
       id: customerId,
       userId,
     });
+    const promise_insert_payer = tx.insert(payers).values({
+      id: payerId,
+      userId,
+      email,
+    });
     await tx.insert(users).values({
       id: userId,
       email,
       hashedPassword,
     });
-    await Promise.all([promise_insert_account, promise_insert_profile, promise_insert_customer]);
+    await Promise.all([promise_insert_account, promise_insert_profile, promise_insert_customer, promise_insert_payer]);
   });
 
   const verificationCode = await generateEmailVerificationCode(userId, email);

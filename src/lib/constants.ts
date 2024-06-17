@@ -23,6 +23,7 @@ export const Paths = {
   ResetPassword: prefixPath("/reset-password"),
   Billing: prefixPath("/dashboard/billing"),
   // Settings: prefixPath("/dashboard/settings"),
+  AiContent: '/ai-content-creator/generate',
 }
 
 export const Info_App = {

@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 import { discord, lucia } from "@/lib/auth";
 import { db } from "@drizzle/db";
 import { Paths } from "@/lib/constants";
-import { users, accounts, profiles, customers } from "@drizzle/db/schema";
+import { users, accounts, profiles, customers, payers } from "@drizzle/db/schema";
 
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url);
@@ -60,6 +60,7 @@ export async function GET(request: Request): Promise<Response> {
       const accountId = generateId(21);
       const profileId = generateId(21);
       const customerId = generateId(21);
+      const payerId = generateId(21);
 
       if (existingProfile) {
         userId = existingProfile.userId;
@@ -72,8 +73,9 @@ export async function GET(request: Request): Promise<Response> {
           providerId: "discord",
           providerAccountId: discordUser.id,
         });
-        let promise_customer, promise_profile, promise_user;
+        let promise_payer, promise_customer, promise_profile, promise_user;
         if (existingProfile) {
+          promise_payer = Promise.resolve();
           promise_customer = Promise.resolve();
           promise_profile = tx
             .update(profiles)
@@ -92,6 +94,11 @@ export async function GET(request: Request): Promise<Response> {
             })
             .where(eq(users.id, userId));
         } else {
+          promise_payer = tx.insert(payers).values({
+            id: payerId,
+            userId: userId,
+            email: discordUser.email!,
+          });
           promise_customer = tx.insert(customers).values({
             id: customerId,
             userId,
@@ -111,7 +118,7 @@ export async function GET(request: Request): Promise<Response> {
           });
         }
         await promise_user;
-        await Promise.all([promise_account, promise_profile, promise_customer]);
+        await Promise.all([promise_account, promise_profile, promise_customer, promise_payer]);
       });
       //=======================================================================================================
       // Create a new session

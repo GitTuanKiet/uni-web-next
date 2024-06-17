@@ -2,6 +2,8 @@ import "server-only";
 
 import { EmailVerificationTemplate } from "./templates/EmailVerification";
 import { ResetPasswordTemplate } from "./templates/ResetPassword";
+import { PaymentCompletedTemplate } from "./templates/PaymentCompleted";
+import { BillingCancelledTemplate } from "./templates/BillingCancelled";
 import { render } from "@react-email/render";
 import { env } from "@/env";
 import { EMAIL_SENDER } from "@/lib/constants";
@@ -11,11 +13,15 @@ import type { ComponentProps } from "react";
 export enum EmailTemplate {
   EmailVerification = "EmailVerification",
   PasswordReset = "PasswordReset",
+  PaymentCompleted = "PaymentCompleted",
+  BillingCancelled = "BillingCancelled",
 }
 
 export type PropsMap = {
   [EmailTemplate.EmailVerification]: ComponentProps<typeof EmailVerificationTemplate>;
   [EmailTemplate.PasswordReset]: ComponentProps<typeof ResetPasswordTemplate>;
+  [EmailTemplate.PaymentCompleted]: ComponentProps<typeof PaymentCompletedTemplate>;
+  [EmailTemplate.BillingCancelled]: ComponentProps<typeof BillingCancelledTemplate>;
 };
 
 const getEmailTemplate = <T extends EmailTemplate>(template: T, props: PropsMap[NoInfer<T>]) => {
@@ -32,6 +38,20 @@ const getEmailTemplate = <T extends EmailTemplate>(template: T, props: PropsMap[
         subject: "Reset your password",
         body: render(
           <ResetPasswordTemplate {...(props as PropsMap[EmailTemplate.PasswordReset])} />,
+        ),
+      };
+    case EmailTemplate.PaymentCompleted:
+      return {
+        subject: "Payment completed",
+        body: render(
+          <PaymentCompletedTemplate {...(props as PropsMap[EmailTemplate.PaymentCompleted])} />,
+        ),
+      };
+    case EmailTemplate.BillingCancelled:
+      return {
+        subject: "Billing cancelled",
+        body: render(
+          <BillingCancelledTemplate {...(props as PropsMap[EmailTemplate.BillingCancelled])} />,
         ),
       };
     default:

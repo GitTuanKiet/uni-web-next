@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 import { Alert, AlertDescription, AlertTitle, ExclamationTriangleIcon } from "@/components";
 import { env } from "@/env";
@@ -15,7 +16,6 @@ export const metadata: Metadata = {
   title: "Billing",
   description: "Manage your billing and subscription",
 };
-
 export default async function BillingPage() {
   const { user } = await validateRequest();
 
@@ -24,6 +24,7 @@ export default async function BillingPage() {
   }
 
   const stripePromises = Promise.all([api.stripe.getPlans.query(), api.stripe.getPlan.query()]);
+  const paypalPromises = Promise.all([api.paypal.getPlans.query(), api.paypal.getPlan.query()]);
 
   return (
     <div className="grid gap-8">
@@ -32,7 +33,7 @@ export default async function BillingPage() {
         <p className="text-sm text-muted-foreground">Manage your billing and subscription</p>
       </div>
       <React.Suspense fallback={<BillingSkeleton />}>
-        <Billing stripePromises={stripePromises} />
+        <Billing stripePromises={stripePromises} paypalPromises={paypalPromises} />
       </React.Suspense>
     </div>
   );
