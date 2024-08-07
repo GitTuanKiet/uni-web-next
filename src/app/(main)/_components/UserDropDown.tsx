@@ -23,6 +23,7 @@ import {
 import { logout } from "@/lib/auth/actions";
 import { Info_App, Paths } from "@/lib/constants";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export const UserDropdown = ({
   email,
@@ -69,13 +70,17 @@ export const UserDropdown = ({
 };
 
 const SignoutConfirmation = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSignout = async () => {
     setIsLoading(true);
     try {
-      await logout();
+      const result = await logout();
+      if (result.path) {
+        router.push(result.path);
+      }
       toast.info("Signed out successfully");
     } catch (error) {
       if (error instanceof Error) {
