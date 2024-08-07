@@ -12,8 +12,9 @@ export const metadata = {
 export default async function VerifyEmailPage() {
   const { user } = await validateRequest();
 
-  if (!user) redirect(Paths.Login);
-  if (user.emailVerified) redirect(Paths.Dashboard);
+  if (!user) redirect(Paths.Login)
+  else if (user.emailVerified) redirect(Paths.Dashboard)
+  else window.location.reload();
 
   return (
     <Card className="w-full max-w-md">

@@ -164,7 +164,7 @@ export async function signup(_: any, formData: FormData): Promise<ActionResponse
   return redirect(Paths.VerifyEmail);
 }
 
-export async function logout(): Promise<{ error: string } | void> {
+export async function logout(): Promise<{ error?: string, path?: string }> {
   const { session } = await validateRequest();
   if (!session) {
     return {
@@ -174,16 +174,17 @@ export async function logout(): Promise<{ error: string } | void> {
   await lucia.invalidateSession(session.id);
   const sessionCookie = lucia.createBlankSessionCookie();
   cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
-  return redirect(Paths.Login);
+  return { path: Paths.Login };
 }
 
 export async function resendVerificationEmail(): Promise<{
   error?: string;
   success?: boolean;
+  path?: string;
 }> {
   const { user } = await validateRequest();
   if (!user) {
-    return redirect(Paths.Login);
+    return { path: Paths.Login };
   }
   const lastSent = await db.query.emailVerificationCodes.findFirst({
     where: (table, { eq }) => eq(table.userId, user.id),
@@ -201,14 +202,14 @@ export async function resendVerificationEmail(): Promise<{
   return { success: true };
 }
 
-export async function verifyEmail(_: any, formData: FormData): Promise<{ error: string } | void> {
+export async function verifyEmail(_: any, formData: FormData): Promise<{ error?: string, path?: string }> {
   const code = formData.get("code");
   if (typeof code !== "string" || code.length !== 8) {
     return { error: "Invalid code" };
   }
   const { user } = await validateRequest();
   if (!user) {
-    return redirect(Paths.Login);
+    return { path: Paths.Login };
   }
 
   const dbCode = await db.transaction(async (tx) => {
